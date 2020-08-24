@@ -1,0 +1,62 @@
+<div class="card mb-3">
+  <img src="https://via.placeholder.com/800x230">
+  <div class="card-body">
+    <h5 class="card-title">{{product?.title}}</h5>
+    <p class="card-text">{{product?.desc}}</p>
+    <p class="card-text"><small class="text-muted">{{product?.categories}}</small></p>
+    <p class="card-text text-right"><small class="text-muted">{{product?.price}}元</small></p>
+    <p class="card-text text-right"><small class="text-muted"><app-stars [rating]="product?.rating"></app-stars></small></p>
+
+  </div>
+</div>
+<div class="card-body">
+  <p class="card-text text-right">
+    <label style="padding-right: 10px;">最新出價:{{currentBid | number:'.2-2'}}元</label>
+    <button class="btn btn-danger btn-lg" [class.active]="isWatched" (click)="watchProduct()">
+      {{isWatched?'取消關注':'關注'}}
+    </button>
+  </p>
+</div>
+<div class="card mb-12" >
+  <div style="margin:2%">
+    <div style="margin:1%">
+      <button class="btn btn-warning" (click)="isCommentHidden = !isCommentHidden;">{{isCommentHidden?'發表評論':'關閉評論'}}</button>
+    </div>
+    <div [hidden]="isCommentHidden" >
+      <div><app-stars [(rating)]="newRating" [readonly]="false"></app-stars></div>
+      <p>寫下你對商品的評價</p>
+      <div>
+        <textarea style="margin:1%;width:98%" [(ngModel)]="newComment"></textarea>
+      </div>
+      <div class="card-text text-right" >
+        <button class="btn btn-success" (click)="addComment()">提交</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+  <p class="card-text"><small class="text-muted">{{comments?.length}}人評論</small></p>
+  <div *ngFor="let comment of comments" class="col-md-12 col-sm-12 col-lg-12">
+    <div class="card text-white bg-dark md-12 lg-12" style="margin: 5px;">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item col-md-9">
+            {{comment.user}}
+          </li>
+          <li class="nav-item col-md-3">
+            <app-stars [rating]="comment.rating"></app-stars>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{comment.content}}</p>
+        <p class="card-text text-right">{{comment.timeStamp}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+

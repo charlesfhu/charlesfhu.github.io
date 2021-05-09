@@ -3,17 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>THE NURTURING LAB</title>
-    <!-- <script src="js/lib/aframe.min.js"></script> -->
-    <!-- <script src="js/lib/aframe-ar.js"></script> -->
+    <title>Unity WebGL Player | The NURTURING LAB</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
-    <!-- <script src="js/app.js"></script> -->
-
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/THE NURTURING LAB.json", {onProgress: UnityProgress});
+    </script>
   </head>
-
-  <body style="margin: 0px; overflow: hidden;">
+  <body>
     <a-scene embedded arjs vr-mode-ui="enabled: false" copycanvas>
       <div id="unityContainer" style="z-index: 2" ></div>
     </a-scene>
+    <!-- <div class="webgl-content">
+      <div id="unityContainer" style="z-index: 2"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">The NURTURING LAB</div>
+      </div>
+    </div> -->
   </body>
 </html>

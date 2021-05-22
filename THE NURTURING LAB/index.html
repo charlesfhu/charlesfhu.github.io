@@ -16,6 +16,18 @@
     <a-scene embedded arjs vr-mode-ui="enabled: false" copycanvas>
       <div id="unityContainer" style="z-index: 2" ></div>
     </a-scene>
+    <script>
+      var recaptureInputAndFocus = function() {
+        var canvas = document.getElementById("#canvas");
+        if(canvas) {
+          canvas.setAttribute("tabindex", "1");
+          canvas.focus(); 
+        } else
+          setTimeout(recaptureInputAndFocus, 100);
+      }
+   
+      recaptureInputAndFocus();
+    </script>
     <!-- <div class="webgl-content">
       <div id="unityContainer" style="z-index: 2"></div>
       <div class="footer">
